@@ -18,11 +18,13 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/nats-io/nats.go/jetstream"
-	"github.com/pitabwire/natspubsub/connections"
-	"gocloud.dev/pubsub/batcher"
 	"strings"
 	"testing"
+
+	"github.com/nats-io/nats.go/jetstream"
+	"gocloud.dev/pubsub/batcher"
+
+	"github.com/pitabwire/natspubsub/connections"
 
 	"gocloud.dev/gcerrors"
 	"gocloud.dev/pubsub"
@@ -101,9 +103,8 @@ func defaultSubOptions(subject, testName string) *connections.SubscriptionOption
 	streamName := strings.Replace(testName, "/", "_", -1)
 
 	opts := &connections.SubscriptionOptions{
-		StreamName:   streamName,
-		Subjects:     []string{subject},
-		DurableQueue: streamName,
+		StreamName: streamName,
+		Subjects:   []string{subject},
 
 		ConsumerName:             streamName,
 		ConsumerRequestTimeoutMs: 1000,
