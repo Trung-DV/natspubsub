@@ -37,8 +37,7 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2  # required for codecov
+
       - name: Run Tests
         shell: bash
         run: make build
