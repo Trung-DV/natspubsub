@@ -14,7 +14,7 @@
 
 module github.com/pitabwire/natspubsub
 
-go 1.21
+go 1.20
 
 require (
 	github.com/nats-io/nats-server/v2 v2.10.4
