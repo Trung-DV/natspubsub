@@ -16,20 +16,7 @@ name: tests
 on: [push, pull_request]
 jobs:
   build:
-    strategy:
-      fail-fast: true
-      matrix:
-        # Note: we used to include windows-latest, but it's super
-        # flaky on Github runners, lots of OOMs.
-        os: [ubuntu-latest]
-        # When updating this, make sure to also update the
-        # latest_go_version variable in internal/testing/runchecks.sh.
-        go-version: [1.21.x]
-        include:
-          - go-version: 1.20.x
-            os: ubuntu-latest
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -37,7 +24,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: ${{ matrix.go-version }}
+          go-version-file: 'go.mod'
 
       - name: Run Tests
         shell: bash
